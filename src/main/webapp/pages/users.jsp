@@ -8,6 +8,7 @@
 <c:if test="${not empty msg}">
     ${msg}
 </c:if>
+<h3><a href="<%=request.getContextPath()%>/addUser/">Add New User</a></h3>
 <c:choose>
     <c:when test="${userDetail != null}">
         <h3>List of Users</h3>
@@ -44,5 +45,6 @@
         No User found in the DB!
     </c:otherwise>
 </c:choose>
+
 </body>
 </html>
