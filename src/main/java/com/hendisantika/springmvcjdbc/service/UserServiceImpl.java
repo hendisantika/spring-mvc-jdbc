@@ -43,4 +43,8 @@ public class UserServiceImpl implements UserService {
         return userDetailDao.deleteUserDetail(id);
     }
 
+    public UserDao getUserDetailDao() {
+        return userDetailDao;
+    }
+
 }
