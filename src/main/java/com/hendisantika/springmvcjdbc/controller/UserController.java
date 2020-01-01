@@ -75,4 +75,11 @@ public class UserController {
         }
         return "users";
     }
+
+    @RequestMapping(value = "update/user/{id}", method = RequestMethod.GET)
+    public String updatePage(@PathVariable("id") int id, ModelMap userModel) {
+        userModel.addAttribute("id", id);
+        userModel.addAttribute("userDetail", userDetailService.getUserDetail(id));
+        return "update";
+    }
 }
