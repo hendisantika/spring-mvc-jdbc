@@ -1,7 +1,10 @@
 package com.hendisantika.springmvcjdbc.dao;
 
+import com.hendisantika.springmvcjdbc.entity.User;
+import com.hendisantika.springmvcjdbc.rowmapper.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,5 +18,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class UserDaoImpl implements UserDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Transactional
+    public User getUserDetail(int id) {
+        User userDetail = jdbcTemplate.queryForObject("select * from user_detail where id = ?",
+                new Object[]{id}, new UserRowMapper());
+        return userDetail;
+    }
 
 }
