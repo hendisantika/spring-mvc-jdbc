@@ -75,6 +75,17 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+            <!-- Embedded Apache Tomcat required for testing web application -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/spring-mvc-jdbc</path>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
+
 </project>
