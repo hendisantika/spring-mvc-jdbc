@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
         return userDetailDao.getAllUserDetail();
     }
 
+    @Override
+    public int addUserDetail(User userDetail) {
+        return userDetailDao.addUserDetail(userDetail);
+    }
+
 }
