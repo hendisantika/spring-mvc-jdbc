@@ -36,4 +36,9 @@ public class UserController {
         return "users";
     }
 
+    @RequestMapping(value = "addUser")
+    public String addPage() {
+        return "add";
+    }
+
 }
