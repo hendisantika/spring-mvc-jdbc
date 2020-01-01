@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : spring-mvc-jdbc
@@ -23,6 +25,13 @@ public class UserDaoImpl implements UserDao {
     public User getUserDetail(int id) {
         User userDetail = jdbcTemplate.queryForObject("select * from user_detail where id = ?",
                 new Object[]{id}, new UserRowMapper());
+        return userDetail;
+    }
+
+    @Transactional
+    public List<User> getAllUserDetail() {
+        List<User> userDetail = jdbcTemplate.query("select * from user_detail",
+                new UserRowMapper());
         return userDetail;
     }
 
