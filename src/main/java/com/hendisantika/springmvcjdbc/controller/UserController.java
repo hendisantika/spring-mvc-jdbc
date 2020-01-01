@@ -1,5 +1,6 @@
 package com.hendisantika.springmvcjdbc.controller;
 
+import com.hendisantika.springmvcjdbc.entity.User;
 import com.hendisantika.springmvcjdbc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by IntelliJ IDEA.
@@ -41,4 +43,24 @@ public class UserController {
         return "add";
     }
 
+    @RequestMapping(value = "add/user", method = RequestMethod.POST)
+    public String addUser(@RequestParam(value = "fname", required = true) String fname,
+                          @RequestParam(value = "lname", required = true) String lname,
+                          @RequestParam(value = "email", required = true) String email,
+                          @RequestParam(value = "dob", required = true) String dob, ModelMap userModel) {
+        User userDetail = new User();
+        userDetail.setFirstName(fname);
+        userDetail.setLastName(lname);
+        userDetail.setEmail(email);
+        userDetail.setDob(dob);
+        int resp = userDetailService.addUserDetail(userDetail);
+        if (resp > 0) {
+            userModel.addAttribute("msg", "User with id : " + resp + " added successfully.");
+            userModel.addAttribute("userDetail", userDetailService.getAllUserDetail());
+            return "users";
+        } else {
+            userModel.addAttribute("msg", "User addition failed.");
+            return "add";
+        }
+    }
 }
