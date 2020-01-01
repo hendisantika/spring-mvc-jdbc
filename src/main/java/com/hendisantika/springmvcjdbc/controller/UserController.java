@@ -82,4 +82,27 @@ public class UserController {
         userModel.addAttribute("userDetail", userDetailService.getUserDetail(id));
         return "update";
     }
+
+    @RequestMapping(value = "update/user", method = RequestMethod.POST)
+    public String updateUser(@RequestParam int id, @RequestParam(value = "fname", required = true) String fname,
+                             @RequestParam(value = "lname", required = true) String lname, @RequestParam("email") String email,
+                             @RequestParam("dob") String dob, ModelMap userModel) {
+        User userDetail = new User();
+        userDetail.setId(id);
+        userDetail.setFirstName(fname);
+        userDetail.setLastName(lname);
+        userDetail.setEmail(email);
+        userDetail.setDob(dob);
+        int resp = userDetailService.updateUserDetail(userDetail);
+        userModel.addAttribute("id", id);
+        if (resp > 0) {
+            userModel.addAttribute("msg", "User with id : " + id + " updated successfully.");
+            userModel.addAttribute("userDetail", userDetailService.getAllUserDetail());
+            return "users";
+        } else {
+            userModel.addAttribute("msg", "User with id : " + id + " updation failed.");
+            userModel.addAttribute("userDetail", userDetailService.getUserDetail(id));
+            return "update";
+        }
+    }
 }
