@@ -57,7 +57,12 @@ public class UserDaoImpl implements UserDao {
         int resp = jdbcTemplate.update(sql, userDetail.getFirstName(), userDetail.getLastName(),
                 userDetail.getEmail(), userDetail.getDob(), userDetail.getId());
         return resp;
+    }
 
+    @Transactional
+    public int deleteUserDetail(int id) {
+        int resp = jdbcTemplate.update("delete from user_detail where id = ?", id);
+        return resp;
     }
 
 }
