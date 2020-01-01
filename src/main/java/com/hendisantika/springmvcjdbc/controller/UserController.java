@@ -30,4 +30,10 @@ public class UserController {
         return "user";
     }
 
+    @RequestMapping(value = "users", method = RequestMethod.GET)
+    public String getUsersDetails(ModelMap userModel) {
+        userModel.addAttribute("userDetail", userDetailService.getAllUserDetail());
+        return "users";
+    }
+
 }
