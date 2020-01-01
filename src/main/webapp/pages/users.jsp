@@ -31,11 +31,12 @@
                     <td>${user.lastName}</td>
                     <td>${user.email}</td>
                     <td>${user.dob}</td>
-                    <td><a
-                            href="<%=request.getContextPath()%>/update/user/${user.id}">Update</a>
-                        &nbsp; <a
-                                href="<%=request.getContextPath()%>/delete/user/${user.id}"
-                                onclick="return confirm('Do you really want to delete?')">Delete</a></td>
+                    <td><a href="<%=request.getContextPath()%>/user/${user.id}">Details</a>
+                        &nbsp;
+                        <a href="<%=request.getContextPath()%>/update/user/${user.id}">Update</a>
+                        &nbsp;
+                        <a href="<%=request.getContextPath()%>/delete/user/${user.id}"
+                           onclick="return confirm('Do you really want to delete?')">Delete</a></td>
                 </tr>
             </c:forEach>
             </tbody>
