@@ -1,6 +1,7 @@
 package com.hendisantika.springmvcjdbc.service;
 
 import com.hendisantika.springmvcjdbc.dao.UserDao;
+import com.hendisantika.springmvcjdbc.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -16,4 +17,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDetailDao;
+
+    public User getUserDetail(int id) {
+        return userDetailDao.getUserDetail(id);
+    }
+
 }
