@@ -63,4 +63,16 @@ public class UserController {
             return "add";
         }
     }
+
+    @RequestMapping(value = "delete/user/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("id") int id, ModelMap userModel) {
+        int resp = userDetailService.deleteUserDetail(id);
+        userModel.addAttribute("userDetail", userDetailService.getAllUserDetail());
+        if (resp > 0) {
+            userModel.addAttribute("msg", "User with id : " + id + " deleted successfully.");
+        } else {
+            userModel.addAttribute("msg", "User with id : " + id + " deletion failed.");
+        }
+        return "users";
+    }
 }
