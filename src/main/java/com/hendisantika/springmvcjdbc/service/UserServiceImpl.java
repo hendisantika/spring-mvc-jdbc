@@ -4,6 +4,8 @@ import com.hendisantika.springmvcjdbc.dao.UserDao;
 import com.hendisantika.springmvcjdbc.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : spring-mvc-jdbc
@@ -20,6 +22,10 @@ public class UserServiceImpl implements UserService {
 
     public User getUserDetail(int id) {
         return userDetailDao.getUserDetail(id);
+    }
+
+    public List<User> getAllUserDetail() {
+        return userDetailDao.getAllUserDetail();
     }
 
 }
